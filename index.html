@@ -1,0 +1,2528 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorium Fisika Teori dan Komputasi</title>
+    <style>
+        /* Reset dan gaya dasar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: #1a3a5f;
+            color: white;
+            padding: 10px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            background-color: rgba(255,255,255,0.2);
+            color: #a8d0e6;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 58, 95, 0.8), rgba(26, 58, 95, 0.9)), url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #a8d0e6;
+            color: #1a3a5f;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin: 5px;
+        }
+        
+        .btn:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Main Content */
+        .main-content {
+            margin: 40px 0;
+        }
+        
+        .page-section {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #1a3a5f;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eaeaea;
+        }
+        
+        h3 {
+            color: #2c5a8c;
+            margin: 20px 0 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        /* Staff Section */
+        /* Staff Section Styles */
+.staff-highlights {
+    background: linear-gradient(135deg, #1a3a5f 0%, #2c5a8c 100%);
+    color: white;
+    padding: 40px;
+    border-radius: 16px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.staff-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 20px;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #a8d0e6;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Staff Tabs */
+.staff-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #eaeaea;
+    padding-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.staff-tab {
+    background: none;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    color: #666;
+    border: 2px solid #eaeaea;
+}
+
+.staff-tab.active {
+    background: #2c5a8c;
+    color: white;
+    border-color: #2c5a8c;
+}
+
+.staff-tab:hover {
+    background: #1a3a5f;
+    color: white;
+    border-color: #1a3a5f;
+}
+
+/* Staff Grid Improvements */
+.staff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.staff-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    transition: all 0.4s ease;
+    border: 1px solid #eaeaea;
+    position: relative;
+    overflow: hidden;
+}
+
+.staff-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(135deg, #2c5a8c 0%, #1a3a5f 100%);
+}
+
+.staff-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(44, 90, 140, 0.15);
+}
+
+.staff-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.staff-avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2c5a8c 0%, #1a3a5f 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    border: 3px solid white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.staff-info {
+    flex: 1;
+}
+
+.staff-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+    color: #1a3a5f;
+}
+
+.staff-position {
+    color: #2c5a8c;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.staff-badge {
+    display: inline-block;
+    background: rgba(44, 90, 140, 0.1);
+    color: #2c5a8c;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-right: 5px;
+}
+
+.staff-details {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eaeaea;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.detail-icon {
+    color: #2c5a8c;
+    font-size: 1rem;
+    width: 20px;
+}
+
+.research-interest {
+    background: rgba(168, 208, 230, 0.2);
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-top: 10px;
+    border-left: 3px solid #2c5a8c;
+}
+
+.interest-title {
+    font-weight: 600;
+    color: #1a3a5f;
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+}
+
+.interest-topic {
+    color: #666;
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+
+/* Dosen Specific Styles */
+.dosen-card {
+    border-left: 4px solid #2c5a8c;
+}
+
+.dosen-card .staff-position {
+    color: #1a3a5f;
+    background: rgba(44, 90, 140, 0.1);
+    padding: 4px 12px;
+    border-radius: 15px;
+    display: inline-block;
+}
+
+/* Mahasiswa Specific Styles */
+.mahasiswa-card {
+    border-left: 4px solid #a8d0e6;
+}
+
+.angkatan-2021 {
+    border-left: 4px solid #2e7d32;
+}
+
+.angkatan-2022 {
+    border-left: 4px solid #1565c0;
+}
+
+.angkatan-2023 {
+    border-left: 4px solid #ef6c00;
+}
+
+.mahasiswa-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-left: 8px;
+}
+
+.badge-2021 {
+    background: #e8f5e8;
+    color: #2e7d32;
+}
+
+.badge-2022 {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+.badge-2023 {
+    background: #fff3e0;
+    color: #ef6c00;
+}
+
+/* Contact Info */
+.contact-info {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eaeaea;
+}
+
+.contact-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: rgba(44, 90, 140, 0.1);
+    color: #2c5a8c;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.contact-btn:hover {
+    background: #2c5a8c;
+    color: white;
+    transform: translateY(-2px);
+}
+        
+        /* Activities Section */
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .activity-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #eaeaea;
+        }
+        
+        .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .activity-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .activity-content {
+            padding: 20px;
+        }
+        
+        .activity-title {
+            font-size: 20px;
+            color: #1a3a5f;
+            margin-bottom: 10px;
+        }
+        
+        .activity-description {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+        
+        /* Concentrations Section */
+        .concentrations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .concentration-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #eaeaea;
+            padding: 25px;
+        }
+        
+        .concentration-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .concentration-title {
+            font-size: 22px;
+            color: #1a3a5f;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .concentration-icon {
+            font-size: 24px;
+            color: #2c5a8c;
+        }
+        
+        .concentration-description {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        /* Modal Styles untuk Detail Kegiatan */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    overflow-y: auto;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: white;
+    margin: 50px auto;
+    padding: 0;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    animation: modalAppear 0.3s ease;
+}
+
+@keyframes modalAppear {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    background: #1a3a5f;
+    color: white;
+    padding: 25px 30px;
+    border-radius: 15px 15px 0 0;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.close-modal:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.modal-category {
+    display: inline-block;
+    background: #a8d0e6;
+    color: #1a3a5f;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.modal-title {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.modal-subtitle {
+    color: #a8d0e6;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.modal-body {
+    padding: 30px;
+}
+
+.modal-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.modal-text {
+    color: #333;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+.speaker-info {
+    background: rgba(168, 208, 230, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 25px 0;
+    border-left: 4px solid #2c5a8c;
+}
+
+.speaker-info h4 {
+    color: #1a3a5f;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.speaker-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.speaker-item {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #eaeaea;
+}
+
+.speaker-name {
+    font-weight: bold;
+    color: #1a3a5f;
+    margin-bottom: 5px;
+}
+
+.speaker-topic {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.event-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fa;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    border-left: 4px solid #2c5a8c;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+}
+
+.meta-icon {
+    font-size: 1.2rem;
+}
+
+/* Pointer cursor untuk activity card */
+.activity-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.activity-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+        /* Footer */
+        footer {
+            background-color: #1a3a5f;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section h3 {
+            color: #a8d0e6;
+            margin-bottom: 15px;
+            border-bottom: none;
+        }
+        
+        .footer-bottom {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Page Navigation */
+        .page-navigation {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo-container {
+                justify-content: center;
+                margin-bottom: 15px;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 0 10px 10px;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+        }
+        
+        /* Page-specific styles */
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+
+        /* Research Section Styles */
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.research-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #eaeaea;
+    border-left: 4px solid #2c5a8c;
+    position: relative;
+    overflow: hidden;
+}
+
+.research-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    border-left-color: #1a3a5f;
+}
+
+.research-category {
+    display: inline-block;
+    background: #2c5a8c;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.research-title {
+    color: #1a3a5f;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.research-description {
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.researcher-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eaeaea;
+}
+
+.researcher-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #2c5a8c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.researcher-details {
+    flex: 1;
+}
+
+.researcher-name {
+    font-weight: bold;
+    color: #1a3a5f;
+    font-size: 0.95rem;
+}
+
+.researcher-position {
+    color: #666;
+    font-size: 0.8rem;
+}
+
+.research-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #666;
+    font-size: 0.8rem;
+}
+
+.research-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.status-ongoing {
+    background: #e8f5e8;
+    color: #2e7d32;
+}
+
+.status-completed {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+.status-planning {
+    background: #fff3e0;
+    color: #ef6c00;
+}
+
+.research-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.research-tag {
+    background: rgba(44, 90, 140, 0.1);
+    color: #2c5a8c;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+/* Research Tabs */
+.research-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #eaeaea;
+    padding-bottom: 10px;
+}
+
+.research-tab {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    color: #666;
+}
+
+.research-tab.active {
+    background: #2c5a8c;
+    color: white;
+}
+
+.research-tab:hover {
+    background: #1a3a5f;
+    color: white;
+}
+
+/* Research Highlights */
+.research-highlights {
+    background: linear-gradient(135deg, #1a3a5f 0%, #2c5a8c 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.highlight-item {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+}
+
+.highlight-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #a8d0e6;
+}
+
+.highlight-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Courses Section Styles */
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.course-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.4s ease;
+    border: 1px solid #eaeaea;
+    position: relative;
+    overflow: hidden;
+}
+
+.course-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(135deg, #2c5a8c 0%, #1a3a5f 100%);
+}
+
+.course-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(44, 90, 140, 0.15);
+    border-color: #2c5a8c;
+}
+
+.course-header {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+.course-icon {
+    font-size: 2.5rem;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #2c5a8c 0%, #1a3a5f 100%);
+    border-radius: 12px;
+    color: white;
+    flex-shrink: 0;
+}
+
+.course-title-section {
+    flex: 1;
+}
+
+.course-title {
+    color: #1a3a5f;
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.course-code {
+    color: #2c5a8c;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background: rgba(44, 90, 140, 0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.course-meta {
+    display: flex;
+    gap: 15px;
+    margin: 15px 0;
+    padding: 15px 0;
+    border-top: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.meta-icon {
+    font-size: 1.1rem;
+    color: #2c5a8c;
+}
+
+.course-description {
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.books-section {
+    margin-top: 25px;
+    background: rgba(44, 90, 140, 0.03);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(44, 90, 140, 0.1);
+}
+
+.books-title {
+    color: #1a3a5f;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.book-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.book-item {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    border-left: 4px solid #2c5a8c;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.book-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.book-title {
+    color: #1a3a5f;
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.book-author {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+.drive-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #2c5a8c 0%, #1a3a5f 100%);
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.drive-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(44, 90, 140, 0.4);
+    background: linear-gradient(135deg, #1a3a5f 0%, #2c5a8c 100%);
+}
+
+.drive-icon {
+    font-size: 1rem;
+}
+
+/* Course Categories */
+.course-categories {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.category-btn {
+    background: white;
+    border: 2px solid #eaeaea;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    color: #666;
+}
+
+.category-btn.active {
+    background: #2c5a8c;
+    color: white;
+    border-color: #2c5a8c;
+}
+
+.category-btn:hover {
+    background: #1a3a5f;
+    color: white;
+    border-color: #1a3a5f;
+}
+
+/* Course Highlights */
+.course-highlights {
+    background: linear-gradient(135deg, #1a3a5f 0%, #2c5a8c 100%);
+    color: white;
+    padding: 40px;
+    border-radius: 16px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.highlight-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 20px;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #a8d0e6;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Difficulty Badges */
+.difficulty-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.difficulty-beginner {
+    background: #e8f5e8;
+    color: #2e7d32;
+}
+
+.difficulty-intermediate {
+    background: #fff3e0;
+    color: #ef6c00;
+}
+
+.difficulty-advanced {
+    background: #ffebee;
+    color: #c62828;
+}
+
+/* Semester Tags */
+.semester-tag {
+    display: inline-block;
+    background: rgba(168, 208, 230, 0.2);
+    color: #2c5a8c;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-right: 8px;
+}
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo-container">
+                <img src="images/logo-fix.jpg" alt="Logo Laboratorium" class="logo">
+                <div class="logo-text">Laboratorium Fisika Teori dan Komputasi</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-page="about">Research</a></li>
+                    <li><a href="#" class="nav-link" data-page="activities">Kegiatan</a></li>
+                    <li><a href="#" class="nav-link" data-page="staff">Staff</a></li>
+                    <li><a href="#" class="nav-link" data-page="concentrations">Konsentrasi</a></li>
+                    <li><a href="#" class="nav-link" data-page="mata-kuliah">Mata Kuliah</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <section id="home" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>Theoretical and Computational Physics</h1>
+                <p>Menggali konsep fisika mendalam dan menerapkannya melalui simulasi komputasi untuk memecahkan masalah kompleks</p>
+                <div>
+                    <a href="#" class="btn nav-link" data-page="about">Research</a>
+                    <a href="#" class="btn nav-link" data-page="activities">Kegiatan Lab</a>
+                    <a href="#" class="btn nav-link" data-page="staff">Staff Lab</a>
+                    <a href="#" class="btn nav-link" data-page="concentrations">Konsentrasi Lab</a>
+                     <a href="#" class="btn nav-link" data-page="mata kuliah">Mata Kuliah</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <div class="container main-content">
+            <div class="page-section">
+                <h2>Selamat Datang di Laboratorium Fisika Teori dan Komputasi</h2>
+                <p>Laboratorium kami merupakan pusat penelitian dan pengembangan dalam bidang fisika teori dan komputasi. Kami berfokus pada penggalian konsep fisika mendalam dan penerapannya melalui simulasi komputasi untuk memecahkan masalah kompleks.</p>
+                
+                <h3>Theoretical and Computational Physics</h3>
+                <p>Kelompok Keahlian Fisika Teoritis dan Komputasi mencakup dua bidang, yaitu fisika teori dan fisika komputasional. Kegiatan kelompok keahlian ini meliputi diskusi antara mahasiswa dan dosen setiap minggu. Diskusi tersebut membahas program kreativitas mahasiswa, pengenalan bahasa pemrograman, dan pengenalan penelitian mahasiswa.</p>
+                
+                <div class="page-navigation">
+                    <a href="#" class="btn nav-link" data-page="about">Pelajari Lebih Lanjut</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Research Page -->
+    <section id="about" class="page">
+        <div class="container main-content">
+            <div class="page-section">
+                <h2>Research Laboratorium Fisika Teori</h2>
+                <p>Laboratorium Fisika Teori dan Komputasi menaungi berbagai kegiatan penelitian yang dilakukan oleh dosen dan mahasiswa. Penelitian dosen berfokus pada pengembangan teori dan metode komputasi dalam berbagai bidang fisika.</p>
+                
+                <!-- Research Highlights -->
+                <div class="research-highlights">
+                    <h3 style="color: white; text-align: center; margin-bottom: 20px;">📊 Statistik Research</h3>
+                    <div class="highlights-grid">
+                        <div class="highlight-item">
+                            <div class="highlight-number">8+</div>
+                            <div class="highlight-label">Proyek Research</div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-number">5</div>
+                            <div class="highlight-label">Dosen Peneliti</div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-number">15+</div>
+                            <div class="highlight-label">Mahasiswa Terlibat</div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-number">3</div>
+                            <div class="highlight-label">Bidang Fokus</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Research Tabs -->
+                <div class="research-tabs">
+                    <button class="research-tab active" onclick="filterResearch('all')">Semua Research</button>
+                    <button class="research-tab" onclick="filterResearch('dosen')">Research Dosen</button>
+                    <button class="research-tab" onclick="filterResearch('mahasiswa')">Research Mahasiswa</button>
+                </div>
+
+                <!-- Research Dosen -->
+                <h3>Research Dosen Fisika Teori dan Komputasi</h3>
+                <p>Penelitian yang dilakukan oleh dosen-dosen laboratorium mencakup berbagai bidang fisika teori dan komputasi.</p>
+                
+                <div class="research-grid">
+                    <!-- Research 1 -->
+                    <div class="research-card" data-category="dosen">
+                        <span class="research-category">cosmology</span>
+                        <h3 class="research-title">Mekanisme Chameleon Pada Model Skalar Tensor Brans-Dicke</h3>
+                        <p class="research-description">
+                            Penelitian tentang mekanisme chameleon dalam konteks teori Brans-Dicke dan implikasinya terhadap kosmologi dan fisika gravitasi.
+                        </p>
+                        <div class="researcher-info">
+                            <div class="researcher-avatar">AS</div>
+                            <div class="researcher-details">
+                                <div class="researcher-name">Dr. Azwar Sutiono, M.Si.</div>
+                                <div class="researcher-position">Dosen Fisika Teori</div>
+                            </div>
+                        </div>
+                        <div class="research-meta">
+                            <span class="research-status status-ongoing">🟢 Sedang Berjalan</span>
+                            <span>📅 2023-2025</span>
+                        </div>
+                        <div class="research-tags">
+                            <span class="research-tag">Gravitasi</span>
+                            <span class="research-tag">Kosmologi</span>
+                            <span class="research-tag">Teori Medan</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 50px;">Research Mahasiswa</h3>
+                <p>Penelitian mahasiswa dalam bentuk tugas akhir (skripsi) yang berorientasi pada penerapan konsep teoretis dan komputasional.</p>
+                
+                <div class="research-grid">
+                    <!-- Research Mahasiswa 1 -->
+                    <div class="research-card" data-category="mahasiswa">
+                        <span class="research-category">BIOFISIKA KOMPUTASI</span>
+                        <h3 class="research-title">Studi Perubahan Sifat Struktur dan Termodinamik Pelipatan Protein HP Menggunakan Simulasi Monte Carlo Dengan Algoritma Wang-Landau</h3>
+                        <p class="research-description">
+                            Simulasi pelipatan protein model HP menggunakan algoritma Wang-Landau untuk memahami mekanisme termodinamika pelipatan protein.
+                        </p>
+                        <div class="researcher-info">
+                            <div class="researcher-avatar">M1</div>
+                            <div class="researcher-details">
+                                <div class="researcher-name">Musdalifah</div>
+                                <div class="researcher-position">Mahasiswa S1 Angkatan 2019</div>
+                            </div>
+                        </div>
+                        <div class="research-meta">
+                            <span class="research-status status-completed">🔵 Selesai</span>
+                            <span>📅 2023</span>
+                        </div>
+                        <div class="research-tags">
+                            <span class="research-tag">Biofisika</span>
+                            <span class="research-tag">Simulasi Monte Carlo</span>
+                            <span class="research-tag">Protein Folding</span>
+                        </div>
+                    </div>
+
+                    <!-- Research Mahasiswa 2 -->
+                    <div class="research-card" data-category="mahasiswa">
+                        <span class="research-category">ASTROFISIKA</span>
+                        <h3 class="research-title">Klasifikasi Bintang RR Lyre/Cepheid/Mira Menggunakan Metode Naive Bayes</h3>
+                        <p class="research-description">
+                            Klasifikasi jenis bintang variabel menggunakan algoritma machine learning Naive Bayes berdasarkan data fotometri.
+                        </p>
+                        <div class="researcher-info">
+                            <div class="researcher-avatar">M2</div>
+                            <div class="researcher-details">
+                                <div class="researcher-name">Ayu Lestari</div>
+                                <div class="researcher-position">Mahasiswa S1 Angkatan 2017</div>
+                            </div>
+                        </div>
+                        <div class="research-meta">
+                            <span class="research-status status-ongoing">🔵 Selesai</span>
+                            <span>📅 2022</span>
+                        </div>
+                        <div class="research-tags">
+                            <span class="research-tag">Astrofisika</span>
+                            <span class="research-tag">Machine Learning</span>
+                            <span class="research-tag">Klasifikasi Bintang</span>
+                        </div>
+                    </div>
+
+                    <!-- Research Mahasiswa 3 -->
+                    <div class="research-card" data-category="mahasiswa">
+                        <span class="research-category">ASTROFISIKA</span>
+                        <h3 class="research-title">Studi Laju Kehilangan Massa Pada Evolusi Bintang Red Supergiant (RSG)</h3>
+                        <p class="research-description">
+                            Analisis proses kehilangan massa pada fase Red Supergiant dan implikasinya terhadap evolusi bintang masif.
+                        </p>
+                        <div class="researcher-info">
+                            <div class="researcher-avatar">M3</div>
+                            <div class="researcher-details">
+                                <div class="researcher-name">Andi Agung Prawira Negara</div>
+                                <div class="researcher-position">Mahasiswa S1 Angkatan 2017</div>
+                            </div>
+                        </div>
+                        <div class="research-meta">
+                            <span class="research-status status-planning">🔵 Selesai</span>
+                            <span>📅 2023</span>
+                        </div>
+                        <div class="research-tags">
+                            <span class="research-tag">Evolusi Bintang</span>
+                            <span class="research-tag">Red Supergiant</span>
+                            <span class="research-tag">Astrofisika Teori</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="page-navigation">
+                    <a href="#" class="btn nav-link" data-page="home">Kembali ke Home</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Activities Page -->
+    <section id="activities" class="page">
+        <div class="container main-content">
+            <div class="page-section">
+                <h2>Kegiatan Laboratorium</h2>
+                <p>Laboratorium Fisika Teori dan Komputasi menyelenggarakan berbagai kegiatan untuk meningkatkan kompetensi dan produktivitas penelitian mahasiswa dan staf.</p>
+                
+                <div class="activities-grid">
+                    <!-- Colloquium 1 -->
+                    <div class="activity-card" onclick="openActivityModal('coloquium1')">
+                        <img src="images/Coloquium.jpg" alt="Colloquium" class="activity-img">
+                        <div class="activity-content">
+                            <h3 class="activity-title">Earth, Climate And Atmosphere as Complex System</h3>
+                            <p class="activity-description">Colloquium ini berjudul <b>Earth, Climate And Atmosphere as Complex System</b> yang dibawakan langsung oleh pihak BRIN <b>Dr. Albertu Sulaiman</b></p>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px; color: #666; font-size: 0.9rem;">
+                                <span>📅 22 Oktober 2025</span>
+                                <span>👥 18 Peserta</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Colloquium 2 -->
+                    <div class="activity-card" onclick="openActivityModal('colloquium2')">
+                        <img src="images/Coloquium2.jpeg" alt="Colloquium" class="activity-img">
+                        <div class="activity-content">
+                            <h3 class="activity-title">Colloquium Multi-Disiplin Fisika Teori</h3>
+                            <p class="activity-description">Colloquium ini dibawakan oleh 4 pemateri dari laboratorium fisika teori dengan materi sesuai konsentrasi peminatan: <b>Condensed Matter Physics, Kosmologi, Komputasi, Fisika Partikel</b>.</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px; color: #666; font-size: 0.9rem;">
+                                <span>📅 29 Oktober 2025</span>
+                                <span>👥 25 Peserta</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="page-navigation">
+                    <a href="#" class="btn nav-link" data-page="home">Kembali ke Home</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+        <!-- Staff Page -->
+    <section id="staff" class="page">
+        <div class="container main-content">
+            <div class="page-section">
+                <h2>👥 Dosen Pengajar</h2>
+                <p>Laboratorium Fisika Teori dan Komputasi didukung oleh staf pengajar yang berpengalaman dan berdedikasi dalam penelitian dan pendidikan.</p>
+                
+                <!-- Staff Highlights -->
+                <div class="staff-highlights">
+                    <h3 style="color: white; margin-bottom: 15px;">🏛️ Tim Dosen Laboratorium</h3>
+                    <p style="color: #ccd6f6; margin-bottom: 20px;">Enam dosen ahli yang membimbing penelitian dan kegiatan akademik di berbagai bidang fisika teori dan komputasi</p>
+                    <div class="staff-stats">
+                    </div>
+                </div>
+
+                <div class="staff-grid">
+                    <!-- Dosen 1 -->
+                    <div class="staff-card dosen-card">
+                        <div class="staff-header">
+                            <div class="staff-avatar">WN</div>
+                            <div class="staff-info">
+                                <div class="staff-name">Prof. Dr. rer-nat Wira Bahari Nurdin</div>
+                                <div class="staff-position">Guru Besar / IVd</div>
+                                <span class="staff-badge">Komputasi</span>
+                            </div>
+                        </div>
+                        <div class="staff-details">
+                            <div class="detail-item">
+                                <span class="detail-icon">🎓</span>
+                                <span>Guru Besar Fisika Teori</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">📚</span>
+                                <span>Spesialisasi: Fisika Teori Komputasi</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">✉️</span>
+                                <span>wbnurdin@gmail.com</span>
+                            </div>
+                        </div>
+                        <div class="contact-info">
+                            <a href="mailto:wira.nurdin@universitas.ac.id" class="contact-btn" title="Email">✉️</a>
+                            <a href="#" class="contact-btn" title="Profil">👤</a>
+                            <a href="#" class="contact-btn" title="Research">📊</a>
+                        </div>
+                    </div>
+
+                    <!-- Dosen 2 -->
+                    <div class="staff-card dosen-card">
+                        <div class="staff-header">
+                            <div class="staff-avatar">TS</div>
+                            <div class="staff-info">
+                                <div class="staff-name">Prof. Dr. Tasrief Surungan, M.Sc.</div>
+                                <div class="staff-position">Guru Besar / IVc</div>
+                                <span class="staff-badge">Fisika Komputasi</span>
+                            </div>
+                        </div>
+                        <div class="staff-details">
+                            <div class="detail-item">
+                                <span class="detail-icon">🎓</span>
+                                <span>Guru Besar Fisika</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">📚</span>
+                                <span>Spesialisasi: Fisika Komputasi</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">✉️</span>
+                                <span>tasrief@unhas.ac.id</span>
+                            </div>
+                        </div>
+                        <div class="contact-info">
+                            <a href="mailto:tasrief.surungan@universitas.ac.id" class="contact-btn" title="Email">✉️</a>
+                            <a href="#" class="contact-btn" title="Profil">👤</a>
+                            <a href="#" class="contact-btn" title="Research">📊</a>
+                        </div>
+                    </div>
+
+                    <!-- Dosen 3 -->
+                    <div class="staff-card dosen-card">
+                        <div class="staff-header">
+                            <div class="staff-avatar">BB</div>
+                            <div class="staff-info">
+                                <div class="staff-name">Dr. Bansawang BJ, M.Sc.</div>
+                                <div class="staff-position">Dosen</div>
+                                <span class="staff-badge">cosmology</span>
+                            </div>
+                        </div>
+                        <div class="staff-details">
+                            <div class="detail-item">
+                                <span class="detail-icon">🎓</span>
+                                <span>Dosen Fisika Teori</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">📚</span>
+                                <span>Spesialisasi: Kosmologi</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">✉️</span>
+                                <span>bansawang@fmipa.unhas.ac.id</span>
+                            </div>
+                        </div>
+                        <div class="contact-info">
+                            <a href="mailto:bansawang.bj@universitas.ac.id" class="contact-btn" title="Email">✉️</a>
+                            <a href="#" class="contact-btn" title="Profil">👤</a>
+                            <a href="#" class="contact-btn" title="Research">📊</a>
+                        </div>
+                    </div>
+
+                    <!-- Dosen 4 -->
+                    <div class="staff-card dosen-card">
+                        <div class="staff-header">
+                            <div class="staff-avatar">AS</div>
+                            <div class="staff-info">
+                                <div class="staff-name">Dr. Azwar Sutiono, M.Si.</div>
+                                <div class="staff-position">Dosen</div>
+                                <span class="staff-badge">Kosmologi</span>
+                            </div>
+                        </div>
+                        <div class="staff-details">
+                            <div class="detail-item">
+                                <span class="detail-icon">🎓</span>
+                                <span>Dosen Fisika Teori</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">📚</span>
+                                <span>Spesialisasi: Kosmologi</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">✉️</span>
+                                <span>azwarsu@gmail.com</span>
+                            </div>
+                            <div class="research-interest">
+                                <div class="interest-title">Bidang Research:</div>
+                                <div class="interest-topic">Mekanisme Chameleon Pada Model Skalar Tensor Brans-Dicke, Teori Gravitasi Alternatif, Kosmologi Teoritis</div>
+                            </div>
+                        </div>
+                        <div class="contact-info">
+                            <a href="mailto:azwar.sutiono@universitas.ac.id" class="contact-btn" title="Email">✉️</a>
+                            <a href="#" class="contact-btn" title="Profil">👤</a>
+                            <a href="#" class="contact-btn" title="Research">📊</a>
+                        </div>
+                    </div>
+
+                    <!-- Dosen 5 -->
+                    <div class="staff-card dosen-card">
+                        <div class="staff-header">
+                            <div class="staff-avatar">BD</div>
+                            <div class="staff-info">
+                                <div class="staff-name">Bayu Dirgantara, Ph.D.</div>
+                                <div class="staff-position">Dosen</div>
+                                <span class="staff-badge">Fisika Partikel</span>
+                            </div>
+                        </div>
+                        <div class="staff-details">
+                            <div class="detail-item">
+                                <span class="detail-icon">🎓</span>
+                                <span>Dosen Fisika Teori</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">📚</span>
+                                <span>Spesialisasi: Fisika Partikel </span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">✉️</span>
+                                <span>bayudirgantara@unhas.ac.id</span>
+                            </div>
+                        </div>
+                        <div class="contact-info">
+                            <a href="mailto:bayu.dirganta@universitas.ac.id" class="contact-btn" title="Email">✉️</a>
+                            <a href="#" class="contact-btn" title="Profil">👤</a>
+                            <a href="#" class="contact-btn" title="Research">📊</a>
+                        </div>
+                    </div>
+
+                    <!-- Dosen 6 -->
+                    <div class="staff-card dosen-card">
+                        <div class="staff-header">
+                            <div class="staff-avatar">EJ</div>
+                            <div class="staff-info">
+                                <div class="staff-name">Eko Juarlin M.Si</div>
+                                <div class="staff-position">Dosen</div>
+                            </div>
+                        </div>
+                        <div class="staff-details">
+                            <div class="detail-item">
+                                <span class="detail-icon">🎓</span>
+                                <span>Dosen Fisika Teori</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">✉️</span>
+                                <span>ekojuarlin@gmail.com</span>
+                            </div>
+                        </div>
+                        <div class="contact-info">
+                            <a href="mailto:rina.andriani@universitas.ac.id" class="contact-btn" title="Email">✉️</a>
+                            <a href="#" class="contact-btn" title="Profil">👤</a>
+                            <a href="#" class="contact-btn" title="Research">📊</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="page-navigation">
+                    <a href="#" class="btn nav-link" data-page="home">Kembali ke Home</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Concentrations Page -->
+    <section id="concentrations" class="page">
+        <div class="container main-content">
+            <div class="page-section">
+                <h2>Konsentrasi Laboratorium</h2>
+                <p>Laboratorium Fisika Teori dan Komputasi memiliki beberapa fokus penelitian utama yang menjadi konsentrasi pengembangan ilmu pengetahuan.</p>
+                
+                <div class="concentrations-grid">
+                    <div class="concentration-card">
+                        <h3 class="concentration-title"><span class="concentration-icon"></span> Condensed Matter Physics</h3>
+                        <p class="concentration-description">Bidang ini mempelajari sifat-sifat kolektif materi pada wujud padat dan cair, terutama fenomena yang muncul dari interaksi banyak partikel. Adapun mata kuliah yang harus diambil meliputi Pengantar linux, mekanika kuantum, fisika teoritik bahan mampat, dan teori perubahan fasa.</p>
+                    </div>
+                    
+                    <div class="concentration-card">
+                        <h3 class="concentration-title"><span class="concentration-icon"></span> Cosmology</h3>
+                        <p class="concentration-description">Kosmologi mempelajari asal-usul, evolusi, dan struktur besar alam semesta. Kosmologi menggabungkan teori (relativitas umum) dengan komputasi numerik dan pengamatan astronom. Mata kuliah yang diambil meliputi Fisika Matematika III, mekanika kuantum, dan dinamika nonlinear</p>
+                    </div>
+                    
+                    <div class="concentration-card">
+                        <h3 class="concentration-title"><span class="concentration-icon"></span>Particle Physics</h3>
+                        <p class="concentration-description">Studi tentang partikel elementer—penyusun dasar materi dan gaya fundamental. Bidang ini mencakup: Model standar (quark,lepton, dan boson), interaksi fundamental. fisikan energi tinggi, dan pencarian fenomena baru seperti lepto quark dan dark matter. Adapun mata kuliah yang harus diambil di bidang penelitian ini yaitu Fisika matematika III, Mekanika kuantum, dan dinamika nonlinear.</p>
+                    </div>
+                    
+                    <div class="concentration-card">
+                        <h3 class="concentration-title"><span class="concentration-icon"></span>Computation</h3>
+                        <p class="concentration-description">Bidang ini menggunakan komputasi dan pemodelan numerik untuk menyelesaikan masalah fisika yang terlalu kompleks untuk metode analitik. Mata kuliah yang harus diambil adalah  Pengantar linud dan pengantar pemrograman internet.</p>
+                    </div>
+                    </div>
+                </div>
+                
+                <div class="page-navigation">
+                    <a href="#" class="btn nav-link" data-page="home">Kembali ke Home</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Concentrations Page -->
+    <section id="concentrations" class="page">
+        <div class="container main-content">
+            <!-- ... konten konsentrasi yang sudah ada ... -->
+        </div>
+    </section>
+
+        <!-- Mata Kuliah Page -->
+    <section id="mata-kuliah" class="page">
+        <div class="container main-content">
+            <div class="page-section">
+                <h2>📚 Mata Kuliah & Referensi</h2>
+                <p>Kumpulan mata kuliah yang terkait dengan Laboratorium Fisika Teori dan Komputasi beserta referensi buku yang dapat diakses melalui Google Drive.</p>
+                
+                <!-- Course Highlights -->
+                <div class="course-highlights">
+                    <h3 style="color: white; margin-bottom: 15px;">🎓 Program Akademik</h3>
+                    <p style="color: #ccd6f6; margin-bottom: 20px;">Kami menawarkan berbagai mata kuliah yang mendukung pengembangan kompetensi dalam fisika teori dan komputasi</p>
+                    <div class="highlight-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">10+</div>
+                            <div class="stat-label">Mata Kuliah</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">10+</div>
+                            <div class="stat-label">Referensi Buku</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">6</div>
+                            <div class="stat-label">Dosen Pengajar</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Akses Digital</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Categories - PERBAIKI: Sesuaikan dengan data-category -->
+                <div class="course-categories">
+                    <button class="category-btn active" onclick="filterCourses('all')">Semua Mata Kuliah</button>
+                    <button class="category-btn" onclick="filterCourses('linux')">Pengantar Linux</button>
+                    <button class="category-btn" onclick="filterCourses('kuantum')">Mekanika Kuantum</button>
+                    <button class="category-btn" onclick="filterCourses('matematika')">Fisika Matematika III</button>
+                    <button class="category-btn" onclick="filterCourses('relativitas')">Teori Relativitas Umum</button>
+                    <button class="category-btn" onclick="filterCourses('pemrograman')">Pengantar Pemrograman Internet</button>
+                    <button class="category-btn" onclick="filterCourses('material')">Fisika Teoritik Bahan Mampat</button>
+                    <button class="category-btn" onclick="filterCourses('nonlinear')">Dinamika Nonlinear</button>
+                    <button class="category-btn" onclick="filterCourses('machine-learning')">Pembelajaran Mesin</button>
+                </div>
+
+                <div class="courses-grid">
+                    <!-- Mata Kuliah 1: Pengantar Linux -->
+                    <div class="course-card" data-category="linux">
+                        <div class="course-header">
+                            <div class="course-icon">🐧</div>
+                            <div class="course-title-section">
+                                <h3 class="course-title">Pengantar Linux
+                                    <span class="difficulty-badge difficulty-beginner">🟢 Pemula</span>
+                                </h3>
+                                <span class="course-code">FIS501</span>
+                                <span class="semester-tag">Semester 5</span>
+                                <span class="semester-tag">2 SKS</span>
+                            </div>
+                        </div>
+                        
+                        <div class="course-meta">
+                            <div class="meta-item">
+                                <span class="meta-icon">⏰</span>
+                                <span>2 SKS</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-icon">📖</span>
+                                <span>Praktikum</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-icon">👨‍🏫</span>
+                                <span>Prof. Tasrief Surungan, M.Sc.</span>
+                            </div>
+                        </div>
+
+                        <p class="course-description">
+                            Mempelajari dasar penggunaan sistem operasi Linux, termasuk perintah terminal, manajemen file, permission, shell scripting, dan lingkungan kerja untuk komputasi ilmiah.
+                        </p>
+                        
+                        <div class="books-section">
+                            <h4 class="books-title">📖 Referensi Buku</h4>
+                            <div class="book-list">
+                                <div class="book-item">
+                                    <div class="book-title">The Linux Command Line</div>
+                                    <div class="book-author">by William Shotts</div>
+                                    <a href="https://drive.google.com/file/d/1EXAMPLE123/view?usp=sharing" 
+                                       class="drive-link" target="_blank">
+                                        <span class="drive-icon">📎</span>
+                                        Akses di Google Drive
+                                    </a>
+                                </div>
+                                
+                                <div class="book-item">
+                                    <div class="book-title">Linux for Beginners</div>
+                                    <div class="book-author">by Jason Cannon</div>
+                                    <a href="https://drive.google.com/file/d/2EXAMPLE456/view?usp=sharing" 
+                                       class="drive-link" target="_blank">
+                                        <span class="drive-icon">📎</span>
+                                        Akses di Google Drive
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mata Kuliah 2: Mekanika Kuantum -->
+                    <div class="course-card" data-category="kuantum">
+                        <div class="course-header">
+                            <div class="course-icon">⚛️</div>
+                            <div class="course-title-section">
+                                <h3 class="course-title">Mekanika Kuantum
+                                    <span class="difficulty-badge difficulty-advanced">🔥 Lanjutan</span>
+                                </h3>
+                                <span class="course-code">FIS502</span>
+                                <span class="semester-tag">Semester 4</span>
+                                <span class="semester-tag">3 SKS</span>
+                            </div>
+                        </div>
+                        
+                        <div class="course-meta">
+                            <div class="meta-item">
+                                <span class="meta-icon">⏰</span>
+                                <span>3 SKS</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-icon">📖</span>
+                                <span>Teori</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-icon">👨‍🏫</span>
+                                <span>Drs. Bansawang BJ, M.Sc. dan Drs. Azwar Sutiono, M.Si</span>
+                            </div>
+                        </div>
+
+                        <p class="course-description">
+                            Membahas perilaku partikel mikroskopik menggunakan prinsip probabilistik, fungsi gelombang, operator, serta persamaan Schrödinger untuk memahami dunia atom dan subatom.
+                        </p>
+                        
+                        <div class="books-section">
+                            <h4 class="books-title">📖 Referensi Buku</h4>
+                            <div class="book-list">
+                                <div class="book-item">
+                                    <div class="book-title">Introduction to Quantum Mechanics</div>
+                                    <div class="book-author">by David J. Griffiths</div>
+                                    <a href="https://drive.google.com/file/d/3EXAMPLE789/view?usp=sharing" 
+                                       class="drive-link" target="_blank">
+                                        <span class="drive-icon">📎</span>
+                                        Akses di Google Drive
+                                    </a>
+                                </div>
+                                
+                                <div class="book-item">
+                                    <div class="book-title">Quantum Mechanics: Concepts and Applications</div>
+                                    <div class="book-author">by Nouredine Zettili</div>
+                                    <a href="https://drive.google.com/file/d/4EXAMPLE012/view?usp=sharing" 
+                                       class="drive-link" target="_blank">
+                                        <span class="drive-icon">📎</span>
+                                        Akses di Google Drive
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mata Kuliah 3: Fisika Matematika III -->
+                    <div class="course-card" data-category="matematika">
+                        <div class="course-header">
+                            <div class="course-icon">∫</div>
+                            <div class="course-title-section">
+                                <h3 class="course-title">Fisika Matematika III
+                                    <span class="difficulty-badge difficulty-intermediate">⚡ Menengah</span>
+                                </h3>
+                                <span class="course-code">FIS503</span>
+                                <span class="semester-tag">Semester 5</span>
+                                <span class="semester-tag">3 SKS</span>
+                            </div>
+                        </div>
+                        
+                        <div class="course-meta">
+                            <div class="meta-item">
+                                <span class="meta-icon">⏰</span>
+                                <span>3 SKS</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-icon">📖</span>
+                                <span>Teori</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-icon">👨‍🏫</span>
+                                <span>Bayu Dirgantara, S.Si., Ph.D. dan Drs. Azwar Sutiono, M.Si</span>
+                            </div>
+                        </div>
+
+                        <p class="course-description">
+                            Mendalami alat matematika lanjutan untuk fisika, seperti matriks tingkat lanjut, persamaan diferensial parsial, dan metode transformasi untuk menyelesaikan masalah fisika kompleks.
+                        </p>
+                        
+                        <div class="books-section">
+                            <h4 class="books-title">📖 Referensi Buku</h4>
+                            <div class="book-list">
+                                <div class="book-item">
+                                    <div class="book-title">Mathematical Methods for Physicists: A Concise Introduction</div>
+                                    <div class="book-author">by Tai L. Chow</div>
+                                    <a href="https://drive.google.com/drive/folders/1JnWwzLCAtojQZSRLFJ6wVsUi8im4Yl56" 
+                                       class="drive-link" target="_blank">
+                                        <span class="drive-icon">📎</span>
+                                        Akses di Google Drive
+                                    </a>
+                                </div>
+                                
+                                <div class="book-item">
+                                    <div class="book-title">Numerical Methods for Engineers</div>
+                                    <div class="book-author">by Steven C. Chapra dan Raymond P. Canale</div>
+                                    <a href="https://drive.google.com/drive/folders/1JnWwzLCAtojQZSRLFJ6wVsUi8im4Yl56" 
+                                       class="drive-link" target="_blank">
+                                        <span class="drive-icon">📎</span>
+                                        Akses di Google Drive
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tambahkan mata kuliah lainnya dengan data-category yang sesuai -->
+                    <!-- Mata Kuliah 4: Teori Relativiras Uum-->
+                    <div class="course-card" data-category="relativitas">
+                        <div class="course-header">
+                            <div class="course-icon">🌒</div>
+                            <div class="course-title-section">
+                                <h3 class="course-title">Teori Relativitas Umum
+                                    <span class="difficulty-badge difficulty-advanced">🔥 Lanjutan</span>
+                                </h3>
+                                <span class="course-code">23H02130502</span>
+                                <span class="semester-tag">Semester 5</span>
+                                <span class="semester-tag">3 SKS</span>
+                            </div>
+                        </div>
+                        
+                        <div class="course-meta">
+                            <div class="meta-item">
+                                <span class="meta-icon">⏰</span>
+                                <span>3 SKS</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-icon">📖</span>
+                                <span>Teori</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-icon">👨‍🏫</span>
+                                <span>Drs. Bansawang BJ, M.Sc. dan Drs. Azwar Sutiono, M.Si</span>
+                            </div>
+                        </div>
+                    
+
+                        <p class="course-description">
+                            Mempelajari gravitasi sebagai kelengkungan ruang-waktu menurut Einstein, termasuk tensor metrik, geodesik, dan penerapannya pada lubang hitam serta kosmologi
+                        </p>
+                    </div>
+
+                    <!-- Mata Kuliah 5: Pengantar Pemrograman Internet-->
+                    <div class="course-card" data-category="pemrograman">
+                        <div class="course-header">
+                            <div class="course-icon">🌐</div>
+                            <div class="course-title-section">
+                                <h3 class="course-title">Pengantar Pemrograman Internet
+                                    <span class="difficulty-badge difficulty-intermediate">⚡ Menengah</span>
+                                </h3>
+                                <span class="course-code">23H02130703</span>
+                                <span class="semester-tag">Semester 5</span>
+                                <span class="semester-tag">2 SKS</span>
+                            </div>
+                        </div>
+                        
+                        <div class="course-meta">
+                            <div class="meta-item">
+                                <span class="meta-icon">⏰</span>
+                                <span>2 SKS</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-icon">📖</span>
+                                <span>Praktikum</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-icon">👨‍🏫</span>
+                                <span>Bayu Dirgantara, S.ST Ph.D</span>
+                            </div>
+                        </div>
+
+                        <p class="course-description">
+                           Membahas dasar pembuatan aplikasi web, termasuk HTML, CSS, JavaScript, konsep client–server, dan prinsip kerja internet.
+                        </p>
+                        
+                        <div class="books-section">
+                            <h4 class="books-title">📖 Referensi Buku</h4>
+                            <div class="book-list">
+                                <div class="book-item">
+                                    <div class="book-title">Mathematical Methods for Physicists: A Concise Introduction</div>
+                                    <div class="book-author">by Tai L. Chow</div>
+                                    <a href="https://drive.google.com/drive/folders/1JnWwzLCAtojQZSRLFJ6wVsUi8im4Yl56" 
+                                       class="drive-link" target="_blank">
+                                        <span class="drive-icon">📎</span>
+                                        Akses di Google Drive
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                     <!-- Mata Kuliah 6: Fisika Teoritik Bahan Mampat-->
+                    <div class="course-card" data-category="material">
+                        <div class="course-header">
+                            <div class="course-icon">🧲</div>
+                            <div class="course-title-section">
+                                <h3 class="course-title">Fisika Teoritik Bahan Mampat
+                                    <span class="difficulty-badge difficulty-advanced">🔥 Lanjutan</span>
+                                </h3>
+                                <span class="course-code">23H02130903</span>
+                                <span class="semester-tag">Semester 5</span>
+                                <span class="semester-tag">3 SKS</span>
+                            </div>
+                        </div>
+                        
+                        <div class="course-meta">
+                            <div class="meta-item">
+                                <span class="meta-icon">⏰</span>
+                                <span>3 SKS</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-icon">📖</span>
+                                <span>material</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-icon">👨‍🏫</span>
+                                <span>Prof. Dr. rer-nat Wira Bahari Nurdin dan Prof. Dr. Tasrief Surungan M.sc</span>
+                            </div>
+                        </div>
+
+                        <p class="course-description">
+                            Menganalisis sifat fisik material pada tingkat mikroskopik, seperti struktur pita energi, superkonduktivitas, magnetisme, dan fenomena kolektif pada sistem banyak partikel
+                        </p>
+                    </div>
+
+                    <!-- Mata Kuliah 5: Pemebelajaran Mesin-->
+                    <div class="course-card" data-category="machine-learning">
+                        <div class="course-header">
+                            <div class="course-icon">🤖</div>
+                            <div class="course-title-section">
+                                <h3 class="course-title">Pembelajaran Mesin
+                                    <span class="difficulty-badge difficulty-intermediate">⚡ Menengah</span>
+                                </h3>
+                                <span class="course-code">23H02131102</span>
+                                <span class="semester-tag">Semester 5</span>
+                                <span class="semester-tag">2 SKS</span>
+                            </div>
+                        </div>
+                        
+                        <div class="course-meta">
+                            <div class="meta-item">
+                                <span class="meta-icon">⏰</span>
+                                <span>2 SKS</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-icon">📖</span>
+                                <span>Praktikum</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-icon">👨‍🏫</span>
+                                <span>Bayu Dirgantara, S.ST P.hd</span>
+                            </div>
+                        </div>
+
+                        <p class="course-description">
+                           Mempelajari teknik komputasi yang membuat komputer belajar dari data, meliputi supervised learning, unsupervised learning, dan penerapannya dalam analisis serta prediksi.
+                        </p>
+                        <div class="books-section">
+                            <h4 class="books-title">📖 Referensi Buku</h4>
+                            <div class="book-list">
+                                <div class="book-item">
+                                    <div class="book-title">Deep Learning With Pyhton</div>
+                                    <div class="book-author">by Francois Chollet</div>
+                                    <a href="https://drive.google.com/drive/folders/1P0b7YrXrcp78aVhlmhB_Lb-3T1a_RCOl" 
+                                       class="drive-link" target="_blank">
+                                        <span class="drive-icon">📎</span>
+                                        Akses di Google Drive
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="books-section">
+                            <h4 class="books-title">📖 Referensi Buku</h4>
+                            <div class="book-list">
+                                <div class="book-item">
+                                    <div class="book-title">Deep Learning</div>
+                                    <div class="book-author">by Ian Goodfellow, Yoshua Bengio, dan Asron Corville</div>
+                                    <a href="https://drive.google.com/drive/folders/1P0b7YrXrcp78aVhlmhB_Lb-3T1a_RCOl" 
+                                       class="drive-link" target="_blank">
+                                        <span class="drive-icon">📎</span>
+                                        Akses di Google Drive
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                
+                <div class="page-navigation">
+                    <a href="#" class="btn nav-link" data-page="home">Kembali ke Home</a>
+                </div>
+            </div>
+        </div>
+    
+    </section>
+        <!-- Modal untuk Detail Kegiatan -->
+    <div id="activityModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-modal" onclick="closeActivityModal()">&times;</button>
+                <span class="modal-category" id="modalCategory">COLLOQUIUM</span>
+                <h2 class="modal-title" id="modalTitle">Judul Kegiatan</h2>
+                <p class="modal-subtitle" id="modalSubtitle">Subtitle kegiatan</p>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Konten akan diisi oleh JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <!-- ... footer yang sudah ada ... -->
+    </footer>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Laboratorium Fisika Teori dan Komputasi</p>
+                    <p>Department of Physics</p>
+                    <p>Email: lab.fisikateori@unhas.ac.id</p>
+                    <p>Phone: +6282928664728</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul style="list-style: none; margin-left: 0;">
+                        <li><a href="#" class="nav-link" data-page="home" style="color: #a8d0e6;">Home</a></li>
+                        <li><a href="#" class="nav-link" data-page="about" style="color: #a8d0e6;">Research</a></li>
+                        <li><a href="#" class="nav-link" data-page="activities" style="color: #a8d0e6;">Kegiatan</a></li>
+                        <li><a href="#" class="nav-link" data-page="staff" style="color: #a8d0e6;">Staff</a></li>
+                        <li><a href="#" class="nav-link" data-page="staff" style="color: #a8d0e6;">Konsentrasi</a></li>
+                        <li><a href="#" class="nav-link" data-page="staff" style="color: #a8d0e6;">Mata Kuliah</a></li>
+                    </ul>
+                </div>
+    
+                <div class="footer-section">
+                    <h3>Location</h3>
+                    <p>Gedung Fakultas MIPA</p>
+                    <p>Tamalanrea Indah</p>
+                    <p>Universitas Hasanuddin</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Laboratorium Fisika Teori dan Komputasi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript untuk navigasi antar halaman
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ambil semua link navigasi
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            // Fungsi untuk menampilkan halaman tertentu
+            function showPage(pageId) {
+                // Sembunyikan semua halaman
+                document.querySelectorAll('.page').forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // Tampilkan halaman yang dipilih
+                document.getElementById(pageId).classList.add('active');
+                
+                // Update status aktif pada navigasi
+                navLinks.forEach(link => {
+                    if (link.getAttribute('data-page') === pageId) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Tambahkan event listener untuk setiap link
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+                    showPage(pageId);
+                    
+                    // Scroll ke atas halaman
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Tampilkan halaman home secara default
+            showPage('home');
+        });
+
+            // Data untuk kegiatan
+    const activitiesData = {
+        'colloquium1': {
+            category: 'COLLOQUIUM',
+            title: 'Earth, Climate And Atmosphere as Complex System',
+            subtitle: 'Pemahaman Sistem Bumi melalui Pendekatan Fisika Kompleks',
+            image: 'images/Colloquium.jpg',
+            date: '22 Oktober 2025',
+            time: '10:00 - 12:00 WIB',
+            location: 'Laboratarium Fisika Teori dan Komputasi',
+            participants: '25 peserta',
+            content: `
+                <img src="images/Coloquium.jpg" alt="Colloquium Earth System" class="modal-image">
+                
+                <div class="event-meta">
+                    <div class="meta-item">
+                        <span class="meta-icon">📅</span>
+                        <span><strong>Tanggal:</strong> 22 Oktober 2025</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">⏰</span>
+                        <span><strong>Waktu:</strong> 10:00 - 12:00 WIB</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">📍</span>
+                        <span><strong>Lokasi:</strong> Laboratarium Fisika Teori dan Komputasi</span>
+                    </div>
+                </div>
+                
+                <p class="modal-text">
+                    Colloquium ini membahas sistem Bumi, iklim, dan atmosfer sebagai sistem kompleks yang saling terhubung. 
+                    <b>Dr. Albertu Sulaiman</b> dari BRIN memaparkan pendekatan baru dalam memahami dinamika sistem iklim global 
+                    menggunakan perspektif fisika teori dan komputasi.
+                </p>
+                
+                <div class="speaker-info">
+                    <h4>👨‍🏫 Informasi Pemateri</h4>
+                    <div class="speaker-details">
+                        <div class="speaker-item">
+                            <div class="speaker-name">Dr. Albertu Sulaiman</div>
+                            <div class="speaker-topic">Peneliti Utama BRIN</div>
+                            <div class="speaker-topic">Spesialisasi: Sistem Kompleks & Klimatologi</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h4 style="color: #1a3a5f; margin: 25px 0 15px;">📋 Materi yang Dibahas:</h4>
+                <ul style="color: #333; line-height: 1.8; margin-bottom: 25px;">
+                    <li>Pemodelan sistem iklim global menggunakan pendekatan fisika kompleks</li>
+                    <li>Analisis data satelit untuk memprediksi perubahan iklim</li>
+                    <li>Dinamika atmosfer dan pengaruhnya terhadap pola cuaca</li>
+                    <li>Simulasi numerik sistem Bumi sebagai sistem terintegrasi</li>
+                    <li>Implikasi perubahan iklim terhadap ekosistem global</li>
+                </ul>
+                
+                <p class="modal-text">
+                    Acara dihadiri oleh 25 peserta yang terdiri dari mahasiswa S1 angkatan 2022 dan 2023 dan dosen dari Laboratarium Fisika Teori dan Komputasi. 
+                    Diskusi berlangsung interaktif dengan banyak pertanyaan menarik seputar aplikasi fisika teori dalam memahami sistem Bumi.
+                </p>
+            `
+        },
+        'colloquium2': {
+            category: 'COLLOQUIUM',
+            title: 'Colloquium Multi-Disiplin Fisika Teori',
+            subtitle: 'Eksplorasi Berbagai Bidang Fisika Teori oleh Dosen Laboratorium',
+            image: 'images/Coloquium2.jpeg',
+            date: '29 Oktober 2025',
+            time: '13:00 - 14:30 WIB',
+            location: 'Ruang Seminar Fisika',
+            participants: '18 Peserta',
+            content: `
+                <img src="images/Coloquium2.jpeg" alt="Colloquium Multi-Disiplin" class="modal-image">
+                
+                <div class="event-meta">
+                    <div class="meta-item">
+                        <span class="meta-icon">📅</span>
+                        <span><strong>Tanggal:</strong> 29 Oktober 2025</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">⏰</span>
+                        <span><strong>Waktu:</strong> 13:00 - 16:30 WIB</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">📍</span>
+                        <span><strong>Lokasi:</strong> Ruang Seminar Fisika</span>
+                    </div>
+                </div>
+                
+                <p class="modal-text">
+                    Colloquium khusus ini menampilkan 4 pemateri dari laboratorium fisika teori yang masing-masing membawakan materi 
+                    sesuai dengan konsentrasi peminatan laboratorium teori. Acara ini bertujuan untuk memberikan gambaran komprehensif 
+                    tentang berbagai bidang penelitian yang dikembangkan di laboratorium.
+                </p>
+                
+                <div class="speaker-info">
+                    <h4>👨‍🏫 Pemateri dan Topik</h4>
+                    <div class="speaker-details">
+                        <div class="speaker-item">
+                            <div class="speaker-name">Prof. Dr. Wira Bahari Nurdin</div>
+                            <div class="speaker-topic">Fisika Komputasi membawakan materi mengenai penerapan fisika mesin</div>
+                        </div>
+                        <div class="speaker-item">
+                            <div class="speaker-name">Bayu DIgantara SST. Ph.D</div>
+                            <div class="speaker-topic">Fisika Partikel membawakan materi mengenai neutriono</div>
+                        </div>
+                        <div class="speaker-item">
+                            <div class="speaker-name">Dr. Bansawang BJ, M.Sc.</div>
+                            <div class="speaker-topic">Kosmology membawakan materi mengenai Black Hold</div>
+                        </div>
+                        <div class="speaker-item">
+                            <div class="speaker-name">Dr. Azwar Sutiono M.Sc.</div>
+                            <div class="speaker-topic">Kosmology membawakan materi mengenai Chameleon</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h4 style="color: #1a3a5f; margin: 25px 0 15px;">📚 Ringkasan Materi:</h4>
+                <ul style="color: #333; line-height: 1.8; margin-bottom: 25px;">
+                    <li><strong>Fisika Mesin:</strong>mempelajari penerapan prinsip fisika fundamental dalam desain dan optimasi sistem mekanik.</li>
+                    <li><strong>Neutriono:</strong>mempelajari partikel elementer yang hampir tanpa massa namun dapat berosilasi antar jenis</li>
+                    <li><strong>Black Hold:</strong> mempelajari wilayah ruang-waktu dengan gravitasi ekstrem dimana bahkan cahaya tidak dapat lolos</li>
+                    <li><strong>Mekanisme Chameleon</strong> mempelajari medan skalar yang sifatnya bergantung pada lingkungan untuk menjelaskan energi gela</li>
+                </ul>
+                
+                <p class="modal-text">
+                    Acara berlangsung selama 3 jam dengan sesi tanya jawab yang sangat interaktif. Mahasiswa menunjukkan antusiasme tinggi 
+                    terhadap perkembangan terkini dalam fisika teori dan banyak bertanya tentang peluang penelitian di masing-masing bidang.
+                </p>
+            `
+        }
+    };
+
+    // Fungsi untuk membuka modal kegiatan
+    function openActivityModal(activityId) {
+        const activity = activitiesData[activityId];
+        const modal = document.getElementById('activityModal');
+        const modalBody = document.getElementById('modalBody');
+        
+        // Isi data ke modal
+        document.getElementById('modalCategory').textContent = activity.category;
+        document.getElementById('modalTitle').textContent = activity.title;
+        document.getElementById('modalSubtitle').textContent = activity.subtitle;
+        modalBody.innerHTML = activity.content;
+        
+        // Tampilkan modal
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Fungsi untuk menutup modal
+    function closeActivityModal() {
+        const modal = document.getElementById('activityModal');
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // Tutup modal ketika klik di luar konten
+    window.onclick = function(event) {
+        const modal = document.getElementById('activityModal');
+        if (event.target == modal) {
+            closeActivityModal();
+        }
+    }
+
+    // Tutup modal dengan tombol ESC
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeActivityModal();
+        }
+    });
+
+        // Fungsi untuk filter research
+    function filterResearch(category) {
+        const cards = document.querySelectorAll('.research-card');
+        const tabs = document.querySelectorAll('.research-tab');
+        
+        // Update active tab
+        tabs.forEach(tab => tab.classList.remove('active'));
+        event.target.classList.add('active');
+        
+        // Filter cards
+        cards.forEach(card => {
+            if (category === 'all') {
+                card.style.display = 'block';
+            } else {
+                if (card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            }
+        });
+    }
+    
+        // Fungsi untuk filter mata kuliah
+    function filterCourses(category) {
+        const cards = document.querySelectorAll('.course-card');
+        const buttons = document.querySelectorAll('.category-btn');
+        
+        // Update active button
+        buttons.forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+        
+        // Filter cards
+        cards.forEach(card => {
+            if (category === 'all') {
+                card.style.display = 'block';
+            } else {
+                const cardCategories = card.getAttribute('data-category').split(' ');
+                if (cardCategories.includes(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            }
+        });
+    }
+
+    </script>
+
+    
+
+</body>
+</html>
